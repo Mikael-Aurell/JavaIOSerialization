@@ -1,9 +1,6 @@
 package se.lexicon.fileIO;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
 import java.util.ArrayList;
@@ -38,5 +35,34 @@ public class CSVReader_Writer {
         e.printStackTrace();
     }
     return strings;
+    }
+
+    public static List<String> writeStringToTextFile (File destination, List<String> source){
+        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(destination))) {
+            for (String writeTo : source) {
+                bufferedWriter.write(writeTo);
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return source;
+    }
+
+    public static void copyFile(File source, File destination){
+        try(
+                BufferedInputStream in = new BufferedInputStream(new FileInputStream(source));
+                BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(destination))
+                ) {
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while((bytesRead = in.read(buffer)) > 0 ){
+                out.write(buffer,0,bytesRead);
+                out.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
