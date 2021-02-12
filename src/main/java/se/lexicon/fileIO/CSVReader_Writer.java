@@ -1,5 +1,7 @@
 package se.lexicon.fileIO;
 
+import se.lexicon.model.Car;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.*;
@@ -64,5 +66,28 @@ public class CSVReader_Writer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void saveToFile (List<Car> source, String filePath){
+        try(
+                ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filePath))
+        ){
+            objectOutputStream.writeObject(source);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static List<Car> saveToList (String filePath){
+        try(
+                ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filePath));
+        ){
+            List<Car> destination = (List<Car>) objectInputStream.readObject();
+
+            return destination;
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
