@@ -1,0 +1,31 @@
+[ {
+  "carId" : "0472b145-87bf-4481-802c-9cae17ea674e",
+  "regNumber" : "ABC123",
+  "brand" : "Citroen",
+  "model" : "C3",
+  "regDate" : "2018-03-11)",
+  "owner" : {
+    "name" : "Mikael",
+    "birthdate" : "2020-03-06"
+  }
+}, {
+  "carId" : "b972ecb8-8bc7-4ce1-8e79-726b359ae5d3",
+  "regNumber" : "DEF456",
+  "brand" : "Saab",
+  "model" : "9000",
+  "regDate" : "2019-06-12)",
+  "owner" : {
+    "name" : "Klara",
+    "birthdate" : "1978-03-05"
+  }
+}, {
+  "carId" : "8cb854fd-ef36-4a32-901c-4801d0b21fed",
+  "regNumber" : "LOL246",
+  "brand" : "Lada",
+  "model" : "R",
+  "regDate" : "2018-08-01)",
+  "owner" : {
+    "name" : "Bengt",
+    "birthdate" : "1968-07-07"
+  }
+} ]

@@ -11,17 +11,31 @@ public class Car implements Serializable {
     private String brand;
     private String model;
     private String regDate;
-    //private Owner owner;
+    private Owner owner;
 
     public Car() {
+        this.carId = UUID.randomUUID();
     }
 
-    public Car(String regNumber, String brand, String model, String regDate /*Owner owner*/) {
+    public Car(String regNumber, String brand, String model, String regDate) {
+        this.carId = UUID.randomUUID();
         this.regNumber = regNumber;
         this.brand = brand;
         this.model = model;
         this.regDate = regDate;
-        //this.owner = owner;
+    }
+
+    public Car(String regNumber, String brand, String model, String regDate,Owner owner) {
+        this.carId = UUID.randomUUID();
+        this.regNumber = regNumber;
+        this.brand = brand;
+        this.model = model;
+        this.regDate = regDate;
+        this.owner = owner;
+    }
+
+    public UUID getCarId() {
+        return carId;
     }
 
     public String getRegNumber() {
@@ -56,6 +70,14 @@ public class Car implements Serializable {
         this.regDate = regDate;
     }
 
+    public Owner getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
@@ -64,6 +86,18 @@ public class Car implements Serializable {
                 ", brand='" + brand + '\'' +
                 ", model='" + model + '\'' +
                 ", regDate='" + regDate + '\'' +
+                ", owner=" + owner +
                 '}';
     }
+
+    /*@Override
+    public String toString() {
+        return "Car{" +
+                "carId=" + carId +
+                ", regNumber='" + regNumber + '\'' +
+                ", brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", regDate='" + regDate + '\'' +
+                '}';
+    }*/
 }
